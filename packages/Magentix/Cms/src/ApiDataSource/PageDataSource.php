@@ -10,6 +10,23 @@ class PageDataSource extends ApiDataSource
 {
     public function __construct(protected PageRepository $pageRepository) {}
 
+    public function processRequestedFilters(array $requestedFilters)
+    {
+        return $this->queryBuilder->scopeQuery(function ($scopeQueryBuilder) use ($requestedFilters) {
+            $this->setDefaultFilters($scopeQueryBuilder);
+
+            foreach ($requestedFilters as $requestedColumn => $requestedValues) {
+                $scopeQueryBuilder->where(function ($query) use ($requestedValues, $requestedColumn) {
+                    foreach ($requestedValues as $value) {
+                        $query = $this->operatorByFilter($query, $requestedColumn, $value);
+                    }
+                });
+            }
+
+            return $scopeQueryBuilder;
+        });
+    }
+
     public function prepareApiQueryBuilder(): PageRepository
     {
         $this->addFilter('code', ['=', 'IN', 'NOT IN']);
@@ -22,7 +39,7 @@ class PageDataSource extends ApiDataSource
     }
 
     /**
-     * @throws ModelNotFoundException If a attribute with the given code is not found.
+     * @throws ModelNotFoundException
      */
     public function getByCode(string $code): array
     {
