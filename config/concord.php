@@ -20,5 +20,6 @@ return [
         \Webkul\Notification\Providers\ModuleServiceProvider::class,
         \Webkul\Product\Providers\ModuleServiceProvider::class,
         \Webkul\User\Providers\ModuleServiceProvider::class,
+        \Magentix\Cms\Providers\ModuleServiceProvider::class,
     ],
 ];

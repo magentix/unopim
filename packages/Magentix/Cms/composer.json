@@ -1,0 +1,28 @@
+{
+    "name": "magentix/unopim-cms",
+    "description": "An UnoPim package to add a CMS Page feature",
+    "license": "MIT",
+    "require": {
+        "php": ">=8"
+    },
+    "autoload": {
+        "psr-4": {
+            "Magentix\\Cms\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Magentix\\Cms\\Providers\\PageServiceProvider"
+            ],
+            "aliases": {}
+        }
+    },
+    "authors": [
+        {
+            "name": "Matthieu Vion",
+            "homepage": "https://www.magentix.fr",
+            "role": "Developer"
+        }
+    ]
+}
