@@ -50,14 +50,18 @@ class PageController extends ApiController
             return $this->validateErrorResponse([$exception->getMessage()]);
         }
 
-        $request = request()->only(['title', 'content', 'locale', 'group', 'code', 'slug', 'status']);
+        $request = request();
 
         try {
-            Event::dispatch('cms.page.create.before');
+            $request->merge(['user_id' => auth()->guard('api')->id() ?: 0]);
 
-            $entity = $this->pageRepository->create($request);
+            Event::dispatch('cms.page.create.before', $request);
 
-            Event::dispatch('cms.page.create.after', $entity);
+            $entity = $this->pageRepository->create(
+                $request->only(['title', 'content', 'locale', 'group', 'code', 'slug', 'status', 'user_id'])
+            );
+
+            Event::dispatch('cms.page.create.after', ['entity' => $entity, 'request' => $request]);
 
             return $this->successResponse(trans('cms::app.cms.pages.create-success'), Response::HTTP_CREATED);
         } catch (Exception $e) {
@@ -72,8 +76,10 @@ class PageController extends ApiController
             return $this->modelNotFoundResponse(trans('cms::app.cms.pages.not-found', ['code' => $code]));
         }
 
+        $request = request();
+
         try {
-            $this->validate(request(), [
+            $this->validate($request, [
                 'group'  => ['required'],
                 'slug'   => ['required', 'unique:cms_pages,slug,'.$entity->id],
                 'title'  => ['required'],
@@ -85,14 +91,14 @@ class PageController extends ApiController
         }
 
         try {
-            Event::dispatch('cms.page.update.before', $entity->id);
+            Event::dispatch('cms.page.update.before', ['id' => $entity->id, 'request' => $request]);
 
             $entity = $this->pageRepository->update(
-                request()->only(['title', 'content', 'locale', 'slug', 'group', 'status']),
+                $request->only(['title', 'content', 'locale', 'slug', 'group', 'status']),
                 $entity->id
             );
 
-            Event::dispatch('cms.page.update.after', $entity);
+            Event::dispatch('cms.page.update.after', ['entity' => $entity, 'request' => $request]);
 
             return $this->successResponse(trans('cms::app.cms.pages.update-success'), Response::HTTP_OK);
         } catch (Exception $e) {

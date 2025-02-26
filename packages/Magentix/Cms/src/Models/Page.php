@@ -4,11 +4,9 @@ namespace Magentix\Cms\Models;
 
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Magentix\Cms\Contracts\Page as PageContract;
 use Webkul\HistoryControl\Contracts\HistoryAuditable as HistoryContract;
 use Webkul\HistoryControl\Traits\HistoryTrait;
-use Webkul\User\Models\Admin;
 
 class Page extends Model implements HistoryContract, PageContract
 {
@@ -20,20 +18,7 @@ class Page extends Model implements HistoryContract, PageContract
 
     protected $table = 'cms_pages';
 
-    protected $fillable = [
-        'title',
-        'content',
-        'code',
-        'slug',
-        'group',
-        'status',
-        'locale',
-    ];
-
-    public function author(): BelongsTo
-    {
-        return $this->belongsTo(Admin::class, 'user_id');
-    }
+    protected $guarded = ['id', 'created_at', 'updated_at'];
 
     protected function slug(): Attribute
     {

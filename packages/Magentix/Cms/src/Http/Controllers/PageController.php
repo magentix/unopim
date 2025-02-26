@@ -82,14 +82,14 @@ class PageController extends Controller
                 'status' => ['in:0,1'],
             ]);
 
-            Event::dispatch('cms.page.update.before', $id);
+            Event::dispatch('cms.page.update.before', ['id' => $id, 'request' => $request]);
 
             $entity = $this->pageRepository->update(
                 $request->only(['title', 'content', 'locale', 'slug', 'group', 'status']),
                 $id
             );
 
-            Event::dispatch('cms.page.update.after', $entity);
+            Event::dispatch('cms.page.update.after', ['entity' => $entity, 'request' => $request]);
 
             session()->forget('_old_input');
             session()->flash('success', trans('cms::app.cms.pages.update-success'));
@@ -117,6 +117,7 @@ class PageController extends Controller
             if ($request->get('new_group')) {
                 $request->merge(['group' => $request->get('new_group')]);
             }
+            $request->merge(['user_id' => auth()->guard('admin')->id() ?: 0]);
 
             $this->validate($request, [
                 'group'  => ['required'],
@@ -127,13 +128,13 @@ class PageController extends Controller
                 'status' => ['in:0,1'],
             ]);
 
-            Event::dispatch('cms.page.create.before');
+            Event::dispatch('cms.page.create.before', $request);
 
             $entity = $this->pageRepository->create(
-                $request->only(['title', 'content', 'locale', 'code', 'slug', 'group', 'status'])
+                $request->only(['title', 'content', 'locale', 'code', 'slug', 'group', 'status', 'user_id'])
             );
 
-            Event::dispatch('cms.page.create.after', $entity);
+            Event::dispatch('cms.page.create.after', ['entity' => $entity, 'request' => $request]);
 
             session()->forget('_old_input');
             session()->flash('success', trans('cms::app.cms.pages.create-success'));
