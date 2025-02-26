@@ -4764,6 +4764,55 @@
             "time": "2025-01-27T12:07:53+00:00"
         },
         {
+            "name": "magentix/unopim-cms",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/magentix/unopim-cms.git",
+                "reference": "65a5637184721d5c76e79ae29e3fdbd17dd3ad22"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/magentix/unopim-cms/zipball/65a5637184721d5c76e79ae29e3fdbd17dd3ad22",
+                "reference": "65a5637184721d5c76e79ae29e3fdbd17dd3ad22",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": [],
+                    "providers": [
+                        "Magentix\\Cms\\Providers\\PageServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Magentix\\Cms\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Matthieu Vion",
+                    "homepage": "https://www.magentix.fr",
+                    "role": "Developer"
+                }
+            ],
+            "description": "An UnoPim package to add a CMS Page feature",
+            "support": {
+                "issues": "https://github.com/magentix/unopim-cms/issues",
+                "source": "https://github.com/magentix/unopim-cms/tree/1.0.0"
+            },
+            "time": "2025-02-25T22:14:48+00:00"
+        },
+        {
             "name": "markbaker/complex",
             "version": "3.0.2",
             "source": {
@@ -14261,5 +14310,5 @@
         "ext-tokenizer": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.2.0"
 }
