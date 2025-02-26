@@ -6,11 +6,13 @@ An UnoPim package to add a CMS Page feature.
 
 # Installation
 
+- Run the following command:
+
 ```bash
 composer require magentix/unopim-cms
 ```
 
-Add the module to `config/concord.php`:
+- Add the module to `config/concord.php`:
 
 ```php
  <?php
@@ -21,6 +23,13 @@ Add the module to `config/concord.php`:
         \Magentix\Cms\Providers\ModuleServiceProvider::class,
     ]
  ];
+```
+
+- Run the commands to execute migrations and clear the cache:
+
+```bash
+php artisan migrate
+php artisan optimize:clear
 ```
 
 # API
@@ -35,11 +44,11 @@ GET {{url}}/api/v1/rest/pages
 
 ### Query Params
 
-| Param   | Value                                      |
-|---------|--------------------------------------------|
-| filters | {"status":[{"operator":"=","value": "1"}]} |
-| page    | 1                                          |
-| limit   | 10                                         |
+| Param   | Value                                     |
+|---------|-------------------------------------------|
+| filters | {"status":[{"operator":"=","value":"1"}]} |
+| page    | 1                                         |
+| limit   | 10                                        |
 
 ### Code Snippet
 
