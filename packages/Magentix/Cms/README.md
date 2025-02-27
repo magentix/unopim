@@ -32,6 +32,12 @@ php artisan migrate
 php artisan optimize:clear
 ```
 
+# Enrich Page entity with new attributes
+
+You can easily add new attributes with a custom package:
+
+- [Example of a custom CMS page package](https://github.com/magentix/unopim-cms-custom)
+
 # API
 
 ## GET All pages
