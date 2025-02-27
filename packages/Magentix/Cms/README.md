@@ -1,4 +1,4 @@
-# UnoPIM CMS
+# UnoPim CMS
 
 An UnoPim package to add a CMS Page feature.
 
