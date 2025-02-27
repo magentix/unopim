@@ -195,6 +195,7 @@ return [
         Webkul\Product\Providers\ProductServiceProvider::class,
         Webkul\Theme\Providers\ThemeServiceProvider::class,
         Webkul\User\Providers\UserServiceProvider::class,
+        Magentix\CmsCustom\Providers\EventServiceProvider::class,
     ])->toArray(),
 
     /*
