@@ -8,6 +8,11 @@ return [
         'edit'   => 'Edit',
         'delete' => 'Delete',
     ],
+    'exporters' => [
+        'page' => [
+            'title' => 'Pages',
+        ],
+    ],
     'cms' => [
         'pages' => [
             'index' => [

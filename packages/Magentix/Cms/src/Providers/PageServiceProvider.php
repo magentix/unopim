@@ -35,6 +35,10 @@ class PageServiceProvider extends ServiceProvider
             dirname(__DIR__).'/Config/api-acl.php', 'api-acl'
         );
 
+        $this->mergeConfigFrom(
+            dirname(__DIR__).'/Config/exporter.php', 'exporters'
+        );
+
         Route::prefix('api')->middleware('api')->group(__DIR__.'/../Routes/admin-api.php');
     }
 }
