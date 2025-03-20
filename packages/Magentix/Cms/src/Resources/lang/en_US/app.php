@@ -27,6 +27,8 @@ return [
                     'locale'     => 'Locale',
                     'created_at' => 'Created',
                     'status'     => 'Status',
+                    'edit'       => 'Edit',
+                    'delete'     => 'Delete',
                 ],
             ],
             'edit' => [
@@ -42,7 +44,6 @@ return [
                 'slug'       => 'Slug',
                 'title'      => 'Title',
                 'locale'     => 'Locale',
-                'created_at' => 'Created',
                 'content'    => 'Content',
                 'status'     => 'Status',
                 'header'     => [

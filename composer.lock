@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "66e1126ea81bd616d6e59a586871580a",
+    "content-hash": "2d336b43b8521db1715f4fc29ece2ccf",
     "packages": [
         {
             "name": "astrotomic/laravel-translatable",
@@ -4765,16 +4765,16 @@
         },
         {
             "name": "magentix/unopim-cms",
-            "version": "1.0.0",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/magentix/unopim-cms.git",
-                "reference": "65a5637184721d5c76e79ae29e3fdbd17dd3ad22"
+                "reference": "024c405b748cd2667e8b4b763070e507c8edc5fb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/magentix/unopim-cms/zipball/65a5637184721d5c76e79ae29e3fdbd17dd3ad22",
-                "reference": "65a5637184721d5c76e79ae29e3fdbd17dd3ad22",
+                "url": "https://api.github.com/repos/magentix/unopim-cms/zipball/024c405b748cd2667e8b4b763070e507c8edc5fb",
+                "reference": "024c405b748cd2667e8b4b763070e507c8edc5fb",
                 "shasum": ""
             },
             "require": {
@@ -4808,9 +4808,9 @@
             "description": "An UnoPim package to add a CMS Page feature",
             "support": {
                 "issues": "https://github.com/magentix/unopim-cms/issues",
-                "source": "https://github.com/magentix/unopim-cms/tree/1.0.0"
+                "source": "https://github.com/magentix/unopim-cms/tree/1.1.1"
             },
-            "time": "2025-02-25T22:14:48+00:00"
+            "time": "2025-02-27T21:05:00+00:00"
         },
         {
             "name": "markbaker/complex",
